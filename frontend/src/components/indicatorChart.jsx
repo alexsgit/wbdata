@@ -14,7 +14,7 @@ function getRandomColor() {
     }
     return color;
 };
-const IndicatorChart = ({ indicator}) => {
+const IndicatorChart = ({ indicator, indicatorName}) => {
   const [chartData, setChartData] = useState(null);
 
   const setIndicatorData = async (indicatorKey) =>
@@ -60,7 +60,7 @@ const IndicatorChart = ({ indicator}) => {
 
   return (
     <div className="chart-container">
-      <h1>{indicator}</h1>
+      <h3>{indicatorName}</h3>
       {chartData && <Line key={indicator} data={chartData} options={options} />}
     </div>
   );
