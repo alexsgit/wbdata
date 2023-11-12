@@ -13,6 +13,7 @@ wbgapi = "^1.0.12"
 
 [tool.poetry.group.dev.dependencies]
 jupyter = "^1.0.0"
+matplotlib = "^3.8.1"
 
 [build-system]
 requires = ["poetry-core"]
