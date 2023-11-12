@@ -14,4 +14,8 @@ time series data effectively.
 
 Steps:
 [] 1. Explore data from World Bank API.
+    - WBGAPI: https://blogs.worldbank.org/opendata/introducing-wbgapi-new-python-package-accessing-world-bank-data
+    - https://towardsdatascience.com/access-a-world-of-data-with-wbgapi-61849354f769
+
+
 [] 2. Init simple backend - frontend application to visualize data.
