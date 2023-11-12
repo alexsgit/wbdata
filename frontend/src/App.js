@@ -1,8 +1,23 @@
 import './App.css';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const getData = () => {
+    fetch('http://localhost:8000/data')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      });
+  }
+  const [chartData, setChartData] = useState({});
+
+  useEffect(() => {
+    getData();
+  }, []);
+
 
   const data = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
