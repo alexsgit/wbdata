@@ -5,7 +5,15 @@ import { Chart, LinearScale, CategoryScale, PointElement, LineElement, Title, To
 // Register the required components
 Chart.register(LinearScale, CategoryScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-
+function getRandomColor() {
+    // Generate a random color. You might want to replace this with a predefined set of colors
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+};
 const IndicatorChart = ({ indicator}) => {
   const [chartData, setChartData] = useState(null);
 
@@ -24,6 +32,7 @@ const IndicatorChart = ({ indicator}) => {
             label: country,
             data: allYears.map(year => yearValueMap.get(year) || null), // Fills gaps with null
             fill: false,
+            borderColor: getRandomColor(),
             tension: 0.1
         };
     });
@@ -50,7 +59,8 @@ const IndicatorChart = ({ indicator}) => {
 
 
   return (
-    <div className="App">
+    <div className="chart-container">
+      <h1>{indicator}</h1>
       {chartData && <Line key={indicator} data={chartData} options={options} />}
     </div>
   );

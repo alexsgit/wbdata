@@ -11,11 +11,11 @@ async def add_cors_header(request, call_next):
 
 
 @app.get("/indicators")
-async def get_indicators():
+async def get_indicators_endpoint():
     return await get_indicators()
 
 
 @app.get("/indicators/{indicator}")
-async def get_indicators(indicator: str):
+async def get_indicator_endpoint(indicator: str):
     return await get_indicator_data(indicator)
 
