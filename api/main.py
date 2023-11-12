@@ -1,8 +1,5 @@
-from functools import lru_cache
-
 from fastapi import FastAPI
-import os
-import pandas as pd
+from .data_loader import get_indicators, get_indicator_data
 app = FastAPI()
 
 
@@ -13,12 +10,12 @@ async def add_cors_header(request, call_next):
     return response
 
 
-@lru_cache()
-def load_data():
-    # get current directory
-    return pd.read_csv(os.path.join(os.getcwd(), "notebooks/wb_data.csv"))
+@app.get("/indicators")
+async def get_indicators():
+    return await get_indicators()
 
-@app.get("/data")
-async def get_data():
-    df = load_data()
-    return df.to_dict(orient='records')
+
+@app.get("/indicators/{indicator}")
+async def get_indicators(indicator: str):
+    return await get_indicator_data(indicator)
+
