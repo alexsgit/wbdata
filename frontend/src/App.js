@@ -11,7 +11,7 @@ const getIndicators = () => {
 
 
 function App() {
-  const [indicators, setIndicators] = useState([]);
+  const [indicators, setIndicators] = useState({});
   const [key, setKey] = useState(0);
   useEffect(() => {
     getIndicators().then(setIndicators);
@@ -28,13 +28,13 @@ function App() {
         activeKey={key}
         onSelect={(k) => setKey(k)}
       >
-         {indicators.map((indicator, idx) => {
-        return (
-          <Tab eventKey={idx} title={indicator}>
-            <IndicatorChart indicator={indicator} />
-          </Tab>
-        );
-      })}
+         {Object.entries(indicators).map(([key, value], idx) => {
+           return (
+             <Tab eventKey={idx} title={value}>
+               <IndicatorChart indicator={key} indicatorName={value} />
+             </Tab>
+           );
+         })}
     </Tabs>
     </div>
   );

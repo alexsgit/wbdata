@@ -1,6 +1,16 @@
 from functools import lru_cache
 import os
 import json
+from enum import Enum
+
+indicators = {
+    'NY.GDP.MKTP.CD': 'GDP (current US$)',
+    'SP.POP.TOTL': 'Population, total',
+    'NE.EXP.GNFS.CD': 'Exports of goods and services (current US$)',
+    'BX.KLT.DINV.CD.WD': 'Foreign direct investment, net inflows (BoP, current US$)',
+    'FP.CPI.TOTL.ZG': 'Inflation, consumer prices (annual %)',
+    'NY.GDP.MKTP.KD.ZG': 'GDP growth (annual %)'
+}
 
 @lru_cache()
 def load_data():
@@ -10,8 +20,7 @@ def load_data():
 
 
 async def get_indicators():
-    data = load_data()
-    return list(data.keys())
+    return indicators
 
 
 async def get_countries():
