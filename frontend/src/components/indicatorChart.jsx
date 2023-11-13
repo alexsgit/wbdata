@@ -19,7 +19,7 @@ const IndicatorChart = ({ indicator, indicatorName}) => {
 
   const setIndicatorData = async (indicatorKey) =>
   {
-    const response = await fetch('http://localhost:8000/indicators/' + indicatorKey);
+    const response = await fetch(process.env.REACT_APP_BACKEND_URL + '/indicators/' + indicatorKey);
     const data = await response.json();
 
     const allYears = Array.from(new Set(Object.values(data).flatMap(country => country.Year))).sort();

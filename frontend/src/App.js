@@ -5,7 +5,7 @@ import IndicatorChart from './components/indicatorChart';
 import {useEffect, useState} from "react";
 
 const getIndicators = () => {
-  return fetch('http://localhost:8000/indicators')
+  return fetch(process.env.REACT_APP_BACKEND_URL + '/indicators')
     .then(response => response.json());
 }
 
